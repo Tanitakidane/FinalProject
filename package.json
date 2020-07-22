@@ -15,9 +15,11 @@
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.24",
     "node-cron": "^2.0.3",
+    "node-fetch": "^2.6.0",
     "puppeteer": "^5.1.0"
   }
 }

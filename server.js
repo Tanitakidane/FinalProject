@@ -1,11 +1,12 @@
 const express=require("express");
 //const crons=require("./crons"); // Just loading the cron task file
 const mongoose=require("mongoose");
-
+const axios=require("axios");
 const User=require("./models/user");
 const Post =require("./models/post");
 var path = require('path');
-
+const FormData = require('form-data');
+const fetch = require('node-fetch');
 const jwt =require('jsonwebtoken');
 
 const  multipart  =  require('connect-multiparty');
@@ -99,6 +100,9 @@ const post =new Post({
 
 })
 
+
+
+
 await post.save();
 res.json({message:"Post Saved SuccessFully"})
     
@@ -111,6 +115,10 @@ res.json({message:"Post Saved SuccessFully"})
 
 
 })
+
+
+
+
 
 
 
