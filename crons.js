@@ -49,22 +49,14 @@ console.log("loaded");
 
 
        console.log(links);
-=======
+
     try {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.goto('https://philly.curbed.com/');
         await page.screenshot({path: 'example.png'});
->>>>>>> parent of bccfcda... cron jobs added
-=======
-    try {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto('https://philly.curbed.com/');
-        await page.screenshot({path: 'example.png'});
->>>>>>> parent of bccfcda... cron jobs added
-       
-        await browser.close();
+
+
         
     } catch (error) {
         console.log(error);

@@ -12,6 +12,8 @@ import CreateComponent from './components/CreateComponent';
 import Signup from './components/Signup';
 import Blog from './components/Blog';
 import Blogpost from './components/Blogpost';
+import About from './components/About';
+import Contact from './components/Contact';
 
 class App extends Component {
   render() {
@@ -29,7 +31,9 @@ class App extends Component {
  <Route exact path="/signup"  component={(props) => <Signup {...props}/>} />
  <Route exact path="/blogpost" component={(props) => <Blogpost {...props}/>}/>
  <Route exact path="/blog"  component={(props) => <Blog {...props}/>} />
+ <Route exact path="/about"  component={(props) => <About {...props}/>} />
  
+ <Route exact path="/contact"  component={(props) => <Contact {...props}/>} />
 
  <Protectedroutes exact path="/create" component={(props)=><CreateComponent {...props}/>}  />
  

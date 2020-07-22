@@ -32,9 +32,9 @@ window.location.reload()
 
                   <div class="submenu">
                 <ul>
-                  <li><Link to="/recipes">Recipes</Link></li>
-                  <li><Link to="/travel">Travel</Link></li>
-                  <li><Link to="/recipes">Technology</Link></li>
+                  <li><Link to="/blog?category=recipe">Recipes</Link></li>
+                  <li><Link to="/blog?category=travel">Travel</Link></li>
+                  <li><Link to="/blog?Category=technology">Technology</Link></li>
                  
                 </ul>
               </div>

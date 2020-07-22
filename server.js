@@ -148,6 +148,30 @@ res.json({posts:posts});
 
 
 
+
+app.post("/getCategoryPosts",async(req,res)=>{
+
+
+    try {
+        
+    let posts=await Post.find({category:req.body.category});
+    
+    res.json({posts:posts});
+    
+    
+    } catch (error) {
+        
+    }
+        
+    
+    
+    
+    
+    })
+    
+    
+
+
 app.post("/getPost",async(req,res)=>{
     console.log(req.body);
 

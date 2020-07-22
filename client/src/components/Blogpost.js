@@ -23,7 +23,7 @@ componentDidMount()
 {
   const authResult = new URLSearchParams(window.location.search); 
 const id = authResult.get('id');
- console.log(id);
+
 
 
  axios.post(`${process.env.REACT_APP_URL}/getPost`,{id:id}).then(data=>{

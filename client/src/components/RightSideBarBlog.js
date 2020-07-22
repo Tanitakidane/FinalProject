@@ -31,6 +31,20 @@ componentDidMount()
 })
 }
 
+imageUrl=(path)=>{
+  if(path.length>0)
+  {
+   let path2= path.split("uploads")[1].replace(/\\/g, "/");
+  
+  
+   return `${process.env.REACT_APP_URL}/${path2}`
+  }
+ 
+   
+  
+  
+  }
+
 
     render() {
         return (
@@ -41,7 +55,7 @@ componentDidMount()
 
 {this.state.recipes.map(ele=>(
     <div className="side_recipes"><Link className="side_item"to={"/blogpost?id="+ele._id}>
-    <div className="img"><img className="resize" src="img/demo.jpg" alt="" /></div>
+    <div className="img"><img className="resize" src={this.imageUrl(ele.image)} alt="" /></div>
 <div className="title dot">{ele.title}</div></Link><a className="side_item" to={"/blogpost?id="+ele._id}>
     </a>
     

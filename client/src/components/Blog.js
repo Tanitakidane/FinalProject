@@ -14,8 +14,20 @@ export default function Blog() {
   
     useEffect(() => {
       const fetchPosts = async () => {
+        const authResult = new URLSearchParams(window.location.search); 
+        const id = authResult.get('category');
+        
         setLoading(true);
-        const res = await axios.post(`${process.env.REACT_APP_URL}/getAllPosts`);
+      let res
+        if(id)
+        {
+          res = await axios.post(`${process.env.REACT_APP_URL}/getCategoryPosts`,{category:id});
+        }
+        else{
+          res = await axios.post(`${process.env.REACT_APP_URL}/getAllPosts`);
+
+        }
+       
         console.log(res.data["posts"])
         setPosts(res.data["posts"]);
         setLoading(false);
