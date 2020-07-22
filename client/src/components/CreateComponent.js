@@ -60,7 +60,8 @@ onFileChange(e) {
 
         post(url, formData,config).then(data=>{
             toast(data.data["message"]);
-            this.state={...this.initialstate};
+            this.setState({...this.initialstate})
+            
         })
     }
 
