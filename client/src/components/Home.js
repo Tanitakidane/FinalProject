@@ -82,7 +82,7 @@ imageUrl=(path)=>{
     <div  className="time"><i  className="fa fa-clock-o"></i>35 <span>Mins  </span></div>
     <div  className="people"><i  className="fa fa-users"></i>4<span>people    </span></div>
   </div>
-                    <div  className="desc_area"><a  className="title" href="#">{ele.title}</a>
+                    <div  className="desc_area"><Link  className="title" to={"/blogpost?id="+ele._id}>{ele.title}</Link>
                     <div  className="desc dot">{ele.text?ele.text.substr(1,10):""}</div>
   </div>
 </div>
@@ -111,12 +111,12 @@ imageUrl=(path)=>{
                    
                   {this.state.recentpost.map(ele=>(
 
-<div  className="col-md-4"><a  className="blog_post_area" href="#">
+<div  className="col-md-4"><Link  className="blog_post_area" to={"/blogpost?id="+ele._id}>
                         <div  className="blog_img"><img  className="resize" src="img/demo.jpg" alt="" /></div>
                         <div  className="blog_desc">
                   <div  className="title">{ele.title}</div>
                           <div  className="desc dot">{ele.text?ele.text.substr(1,10):""}</div>
-                        </div></a></div>
+                        </div></Link></div>
 
                   ))}
                     
