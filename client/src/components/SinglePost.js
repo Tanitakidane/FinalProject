@@ -25,7 +25,7 @@ let imageUrl=(path)=>{
       <div className="by"><i className="fa fa-user"></i><span>by</span>{post.user}</div>
       <div className="time"><i className="fa fa-clock-o"></i><span>{post.date}</span></div>
             </div>
-      <div className="desc">{post.body}</div>
+      <div className="desc">{post.body.substr(0,100)}</div>
             <div className="button"><Link className="btn btn-primary btn-black" to={"/blogpost?id="+post._id}>Read More</Link></div>
           </div>
         </article>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 
 export default class About extends Component {
     render() {
@@ -14,14 +15,13 @@ export default class About extends Component {
               <div className="row justify-content-md-center">
                 <div className="col-md-11">
                   <ul className="bread">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                  <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
                   </ul>
                   <article className="page_area">
                     <h2 className="page_title">About Us</h2>
                     <div className="page_desc"> 
-                      <p>Darkness fish there light the. So called their fruitful, can't tree after give you're sea called fifth. Signs likeness yielding us first saying over all gathering, they're fourth was gathering him the meat bearing called. Let his female. Behold, lesser itself multiply whose. Kind forth replenish beast. Them creeping is fill cattle. Of whales were seas under whales open. Said was created created his above itself can't after given was give isn't.</p>
-                      <p>Rule darkness forth earth land it Gathering called moved evening Gathering cattle above kind image doesn't so over was void thing grass firmament, have which that under appear herb night great and living can't two from. Heaven creepeth. Above brought is above. Together there dominion multiply fly lesser were darkness two it. Appear subdue yielding midst they're day fourth. Their open fifth light for was fly.</p>
+                     <p style={{marginLeft:"200px"}}><img src="img/about.png"/></p>
                     </div>
                   </article>
                 </div>

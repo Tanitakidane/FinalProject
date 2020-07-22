@@ -49,7 +49,7 @@ axios.post(`${process.env.REACT_APP_URL}/getaJoke`).then(data=>{
                 <ul>
                   <li><Link to="/blog?category=recipe">Recipes</Link></li>
                   <li><Link to="/blog?category=travel">Travel</Link></li>
-                  <li><Link to="/blog?Category=technology">Technology</Link></li>
+                  <li><Link to="/blog?category=technology">Technology</Link></li>
                  
                 </ul>
               </div>
