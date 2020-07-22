@@ -145,7 +145,6 @@ imageUrl=(path)=>{
               <div  className="container">
                 <div  className="row">
                   <div  className="col-md-12">
-                    <div  className="socail_bar_section_area"><a  className="social_item fb" href="#"><i  className="fa fa-facebook"></i><span>Facebook</span></a><a  className="social_item tw" href="#"><i  className="fa fa-twitter"></i><span>Twitter</span></a><a  className="social_item ld" href="#"><i  className="fa fa-linkedin"></i><span>Linkedin</span></a><a  className="social_item in" href="#"><i  className="fa fa-instagram"></i><span>Instagram</span></a><a  className="social_item you" href="#"><i  className="fa fa-youtube"></i><span>Youtube</span></a><a  className="social_item pt" href="#"><i  className="fa fa-pinterest"></i><span>Pinterest</span></a></div>
                   </div>
                 </div>
               </div>
