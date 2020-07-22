@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import auth from "../authentication/auth";
+import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default class Header extends Component {
 
 constructor(props)
@@ -15,6 +18,18 @@ event.preventDefault();
 
 localStorage.removeItem("token");
 window.location.reload()
+
+}
+
+
+getAJoke(event)
+{
+event.preventDefault();
+
+axios.post(`${process.env.REACT_APP_URL}/getaJoke`).then(data=>{
+  toast(data.data["message"]);
+ 
+})
 
 }
 
@@ -50,9 +65,13 @@ window.location.reload()
                   </li>
                   <li><span> <Link to="/about">About Us</Link></span></li>
                   <li><span> <Link to="/contact">Contact</Link></span></li>
+
+                  <li><span> <Link to="/contact" onClick={this.getAJoke}>Joke OF The Day</Link></span></li>
                 </ul>
               </nav>
             </div>
+
+            <ToastContainer />
           </header>
         )
     }

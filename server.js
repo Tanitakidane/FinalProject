@@ -9,6 +9,8 @@ const FormData = require('form-data');
 const fetch = require('node-fetch');
 const jwt =require('jsonwebtoken');
 
+var giveMeAJoke = require('give-me-a-joke');
+
 const  multipart  =  require('connect-multiparty');
 const  multipartMiddleware  =  multipart({ uploadDir:  './uploads' });
 
@@ -211,6 +213,20 @@ app.post("/getRecipes",async(req,res)=>{
 })
 
 
+
+
+app.post("/getaJoke",(req,res)=>{
+
+
+const categories=["blonde", "knock-knock", "animal", "jod"];
+const randomElement = categories[Math.floor(Math.random() * categories.length)];
+
+giveMeAJoke.getRandomJokeOfTheDay (randomElement, function(joke) {
+    
+    res.json({message:joke});
+});
+
+})
 
 
 let port=process.env.PORT || 4000;
