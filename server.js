@@ -127,7 +127,7 @@ res.json({message:"Post Saved SuccessFully"})
 //get All posts
 
 
-app.post("/getAllPosts",async(req,res)=>{
+app.get("/getAllPosts",async(req,res)=>{
 
 
 try {

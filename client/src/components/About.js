@@ -21,7 +21,7 @@ export default class About extends Component {
                   <article className="page_area">
                     <h2 className="page_title">About Us</h2>
                     <div className="page_desc"> 
-                     <p style={{marginLeft:"200px"}}><img src="img/about.png"/></p>
+                     <p style={{marginLeft:"200px"}}><img src="img/aboutme.png"/></p>
                     </div>
                   </article>
                 </div>

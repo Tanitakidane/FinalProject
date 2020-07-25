@@ -36,9 +36,9 @@ imageUrl=(path)=>{
   if(path.length>0)
   {
    let path2= path.split("uploads")[1].replace(/\\/g, "/");
+ 
   
-  
-   return `${process.env.REACT_APP_URL}/${path2}`
+   return `${process.env.REACT_APP_URL}${path2}`
   }
  
    
@@ -50,7 +50,7 @@ imageUrl=(path)=>{
 
     render() {
         return (
-            <div  className="content">
+            <div  className="content" id="maincontent">
             <div  className="container cont_area">
               <div  className="search_area">
                 <div  className="search">

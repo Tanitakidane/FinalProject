@@ -4,8 +4,13 @@
   "description": "A blog app ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Tanita kidane",
   "license": "ISC",
@@ -17,6 +22,7 @@
     "express": "^4.17.1",
     "form-data": "^3.0.0",
     "give-me-a-joke": "^0.3.2",
+    "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.24",
     "node-cron": "^2.0.3",

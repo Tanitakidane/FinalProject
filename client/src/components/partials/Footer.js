@@ -56,10 +56,11 @@ imageUrl=(path)=>{
           <div  className="col-sm-12">
             <div  className="footer_item">
               <div  className="row">
-                <div  className="col-lg-5 col-md-12"><Link  className="logo_footer" to="/"><img src="img/logo.svg" width="220" alt="logo"/></Link>
+                <div  className="col-lg-5 col-md-12"><Link  className="logo_footer" to="/"><img src="img/logo.png" width="220" alt="logo"/></Link>
                   <div  className="footer_about">
-                    <p>His them there moveth isn't creature have the second for first face. Blessed. Made divided let from their above given.</p>
-                    <p>Blessed creepeth behold also multiply. Light upon. Is replenish can't fruitful morning bearing one tree deep abundantly form night beast be, darkness grass so face night open. Night seas is.</p>
+                    <p>“When we strive to become better than we are, everything around us becomes better too.”-Paulo Coelho
+</p>
+                    <p>"What lies behind you and what lies in front of you, pales in comparison to what lies inside of you." - Ralph Waldo Emerson</p>
                   </div>
                 </div>
                

@@ -6,8 +6,7 @@ console.log("loaded");
     console.log('running a task every minute');
      
 (async () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         const browser = await puppeteer.launch({headless:false});
         const page = await browser.newPage();
         await page.goto('https://philly.curbed.com/');

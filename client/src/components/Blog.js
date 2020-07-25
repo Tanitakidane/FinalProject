@@ -24,7 +24,7 @@ export default function Blog() {
           res = await axios.post(`${process.env.REACT_APP_URL}/getCategoryPosts`,{category:id});
         }
         else{
-          res = await axios.post(`${process.env.REACT_APP_URL}/getAllPosts`);
+          res = await axios.get(`${process.env.REACT_APP_URL}/getAllPosts`);
 
         }
        
