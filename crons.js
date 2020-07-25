@@ -1,5 +1,6 @@
 const cron = require('node-cron');
 const puppeteer = require('puppeteer');
+const cheerio=require("cheerio");
 console.log("loaded");
 
 
@@ -9,7 +10,7 @@ console.log("loaded");
 
         const browser = await puppeteer.launch({headless:false});
         const page = await browser.newPage();
-        await page.goto('https://philly.curbed.com/');
+        await page.goto('https://philly.curbed.com/',{waitUntil: 'load', timeout: 0});
      
 
         // getting the html of the whole page then with help of cheerio getting the links to evaluate
@@ -35,10 +36,35 @@ console.log("loaded");
 
        for(let i=0;i<links.length;i++)
        {
-            await page.goto(links[i]);
+
+        try{
+
+            await page.goto(links[i],{waitUntil: 'load', timeout: 0});
 
             let html=await page.evaluate(()=>document.body.innerHTML);
-       
+          
+            const $=cheerio.load(html);
+             let title=$(".c-page-title").text();
+
+             console.log(title);
+
+             console.log("----------------------------------------------");
+
+            let image=$(".c-picture>source").attr("srcset");
+            console.log(image.split(",")[0]);
+
+            console.log("---------------------------------------");
+
+            let text=$(".c-entry-content").text();
+            console.log(text.replace(/\s+/g, " "));
+        }
+
+        catch (e)
+        {
+console.log(e);
+        }
+           
+           
 
 
 
@@ -47,19 +73,9 @@ console.log("loaded");
 
 
 
-       console.log(links);
+       //console.log(links);
 
-    try {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto('https://philly.curbed.com/');
-        await page.screenshot({path: 'example.png'});
-
-
-        
-    } catch (error) {
-        console.log(error);
-    }
+  
  
   })();
   
