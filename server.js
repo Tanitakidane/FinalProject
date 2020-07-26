@@ -150,6 +150,8 @@ res.json({posts:posts});
 
 
 } catch (error) {
+
+    res.json({error:error});
     
 }
     
