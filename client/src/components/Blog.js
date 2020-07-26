@@ -19,16 +19,16 @@ export default function Blog() {
         
         
         setLoading(true);
-        console.log("iddd",id);
+     
       let res
         if(id)
         {
           res = await axios.post(`${process.env.REACT_APP_URL}/getCategoryPosts`,{category:id});
         }
         else{
-          console.log("else called");
-          res = await axios.get(`${process.env.REACT_APP_URL}/getAllPosts`);
-          console.log(res);
+         
+          res = await axios.post(`${process.env.REACT_APP_URL}/getAllPosts`);
+         
 
         }
        
