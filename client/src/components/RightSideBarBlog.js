@@ -30,20 +30,32 @@ componentDidMount()
  
 })
 }
-
 imageUrl=(path)=>{
+
   if(path.length>0)
   {
-   let path2= path.split("uploads")[1].replace(/\\/g, "/");
+    console.log(path);
+
+    if(path.includes("http"))
   
+    {
+     return path;
+    }
+   else{
+    let path2= path.split("uploads")[1].replace(/\\/g, "/");
   
-   return `${process.env.REACT_APP_URL}/${path2}`
+    let mainpath=`${process.env.REACT_APP_URL}${path2}`
+            console.log(mainpath);
+    return `${process.env.REACT_APP_URL}${path2}`
+   }
+
+
   }
+
  
-   
-  
-  
-  }
+
+
+}
 
 
     render() {
