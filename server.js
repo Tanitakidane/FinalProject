@@ -15,8 +15,8 @@ const { v4: uuidv4 } = require('uuid');
 
 
 const s3 = new AWS.S3({
-    accessKeyId: "AKIAIW5I3TLYNPDXOR5A",
-    secretAccessKey: "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"
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET
 })
 
 const storage = multer.memoryStorage({
@@ -130,7 +130,7 @@ try {
     const fileType = myFile[myFile.length - 1]
 
     const params = {
-        Bucket: "curbsidephillytanita",
+        Bucket: process.env.AWS_BUCKET_NAME,
         Key: `${uuidv4()}.${fileType}`,
         Body: req.file.buffer
     }
