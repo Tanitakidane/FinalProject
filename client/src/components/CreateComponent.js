@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import axios, { post } from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 export default class CreateComponent extends Component {
 
@@ -17,6 +19,7 @@ constructor(props)
         text:" ",
         image:"",
         category:"",
+        loading:false
 
 
     }
@@ -46,6 +49,7 @@ onFileChange(e) {
 
     if(this.state.title!=="" && this.state.image!="" && this.state.text!=="" && this.state.category!=="" )
     {
+      this.setState({...this.state,loading:true});
         const url=`${process.env.REACT_APP_URL}/createpost`
         const formData = new FormData();
         formData.append('file',this.state.image);
@@ -60,7 +64,9 @@ onFileChange(e) {
         }
 
         post(url, formData,config).then(data=>{
+          this.setState({...this.state,loading:false});
             toast(data.data["message"]);
+          
             this.setState({...this.initialstate})
            window.location.reload();
             
@@ -85,6 +91,8 @@ onFileChange(e) {
                 </div>
               </div>
               <div className="row justify-content-md-center">
+
+          
               <ToastContainer />
                 <div className="col-md-11">
                   <ul className="bread">
@@ -99,6 +107,7 @@ onFileChange(e) {
         <fieldset>
         
           <div className="control-group">
+         
         
             <label className="control-label"  for="username">Title</label>
             <div className="controls">
@@ -106,6 +115,17 @@ onFileChange(e) {
              
             </div>
           </div>
+
+          {this.state.loading? <Loader
+         type="Puff"
+         color="#00BFFF"
+         height={100}
+         width={100}
+         style={{position:"absolute" ,marginLeft:"500px"}}
+       
+ 
+      />:""}
+         
        
           <div className="control-group">
           
@@ -131,6 +151,7 @@ onFileChange(e) {
              
             </div>
           </div>
+         
        
           <div className="control-group">
           
