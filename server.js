@@ -27,12 +27,24 @@ mongoose.connect("mongodb+srv://logan:logan123@cluster0-xtevk.mongodb.net/google
   console.log("Mongodb Connected");
   }).catch(err => console.log("Mongoose Connection Error",err));
 
+console.log("node env",process.env.NODE_ENV);
+  if(process.env.NODE_ENV==="production")
+  {
+      
+   
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+
+  }
 
 
 // login routes
 
 
-app.post("/login",async(req,res)=>{
+app.post("/api/login",async(req,res)=>{
   
    
 
@@ -61,7 +73,7 @@ app.post("/login",async(req,res)=>{
 })
 
 
-app.post("/signup",async(req,res)=>{
+app.post("/api/signup",async(req,res)=>{
  
 let _user=await User.findOne({username:req.body.username});
 
@@ -87,7 +99,7 @@ res.json({message:"SuccesFully Registered Please Login To Post Content"});
 })
 
 
-app.post("/createpost",multipartMiddleware,async(req,res)=>{
+app.post("/api/createpost",multipartMiddleware,async(req,res)=>{
 
     // invalid token - synchronous
 try {
@@ -127,7 +139,7 @@ res.json({message:"Post Saved SuccessFully"})
 //get All posts
 
 
-app.get("/getAllPosts",async(req,res)=>{
+app.get("/api/getAllPosts",async(req,res)=>{
 
 
 try {
@@ -151,7 +163,7 @@ res.json({posts:posts});
 
 
 
-app.post("/getCategoryPosts",async(req,res)=>{
+app.post("/api/getCategoryPosts",async(req,res)=>{
     console.log(req.body);
 
 
@@ -176,7 +188,7 @@ app.post("/getCategoryPosts",async(req,res)=>{
     
 
 
-app.post("/getPost",async(req,res)=>{
+app.post("/api/getPost",async(req,res)=>{
   
 
 
@@ -202,7 +214,7 @@ app.post("/getPost",async(req,res)=>{
 
 
 
-app.post("/getRecipes",async(req,res)=>{
+app.post("/api/getRecipes",async(req,res)=>{
 
 
     let recipepost=await Post.find({category:"recipe"}).limit(5);;
@@ -217,7 +229,7 @@ app.post("/getRecipes",async(req,res)=>{
 
 
 
-app.post("/getaJoke",(req,res)=>{
+app.post("/api/getaJoke",(req,res)=>{
 
 
 const categories=["blonde", "knock-knock", "animal", "jod"];
