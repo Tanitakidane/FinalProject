@@ -51,7 +51,7 @@ imageUrl=(path)=>{
    else{
     let path2= path.split("uploads")[1].replace(/\\/g, "/");
   
-  
+            console.log(process.env.REACT_APP_URL,path2);
     return `${process.env.REACT_APP_URL}/${path2}`
    }
 
