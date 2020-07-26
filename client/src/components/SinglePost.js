@@ -6,10 +6,17 @@ export default function SinglePost({ posts, loading }) {
 
 let imageUrl=(path)=>{
 
- let path2= path.split("uploads")[1].replace(/\\/g, "/");
+  if(path.includes("http"))
+
+  {
+   return path;
+  }
+ else{
+  let path2= path.split("uploads")[1].replace(/\\/g, "/");
 
 
- return `${process.env.REACT_APP_URL}/${path2}`
+  return `${process.env.REACT_APP_URL}/${path2}`
+ }
 
 
 }

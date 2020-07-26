@@ -14,7 +14,7 @@ constructor(props)
     this.state={
 
         title:"",
-        text:"",
+        text:" ",
         image:"",
         category:"",
 
@@ -31,6 +31,7 @@ constructor(props)
 
 onValueChange(e)
 {
+  
 
     this.setState({...this.state,[e.target.name]:e.target.value})
     
@@ -61,6 +62,7 @@ onFileChange(e) {
         post(url, formData,config).then(data=>{
             toast(data.data["message"]);
             this.setState({...this.initialstate})
+           window.location.reload();
             
         })
     }
@@ -110,7 +112,8 @@ onFileChange(e) {
             <label className="control-label" for="email">Category</label>
             <div className="controls">
             <select name="category" onChange={this.onValueChange} className="input-xlarge" id="cars">
-  <option value="recipe">Recipe</option>
+            <option selected value="">Select Category</option>
+  <option  value="recipe">Recipe</option>
   <option value="technology">Technology</option>
   <option value="travel">Travel</option>
  

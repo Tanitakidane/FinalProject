@@ -1,7 +1,13 @@
 const cron = require('node-cron');
 const puppeteer = require('puppeteer');
 const cheerio=require("cheerio");
-console.log("loaded");
+const Post=require("./models/post");
+const mongoose=require("mongoose");
+
+mongoose.connect("mongodb+srv://logan:logan123@cluster0-xtevk.mongodb.net/googlebooks?retryWrites=true&w=majority",{ useUnifiedTopology: true, useNewUrlParser: true  })
+  .then(() => {
+  console.log("Mongodb Connected");
+  }).catch(err => console.log("Mongoose Connection Error",err));
 
 
     console.log('running a task every minute');
@@ -46,17 +52,39 @@ console.log("loaded");
             const $=cheerio.load(html);
              let title=$(".c-page-title").text();
 
-             console.log(title);
+            /// console.log(title);
 
-             console.log("----------------------------------------------");
+             //console.log("----------------------------------------------");
 
             let image=$(".c-picture>source").attr("srcset");
-            console.log(image.split(",")[0]);
+     
+        let _image=image.split(",")[0];
 
-            console.log("---------------------------------------");
+        var urlRegex = /(https?:\/\/[^ ]*)/;
+var mainimage =_image.match(urlRegex)[1];
+console.log(mainimage);
+            //console.log("---------------------------------------");
 
             let text=$(".c-entry-content").text();
-            console.log(text.replace(/\s+/g, " "));
+     console.log(text.replace(/\s+/g, " "));
+
+const newpost=new  Post({
+
+    title:title,
+    body:text.replace(/\s+/g, " "),
+    image:mainimage,
+    category:"travel",
+    user:"Tanita"
+
+
+
+
+
+})
+
+await newpost.save();
+
+
         }
 
         catch (e)

@@ -24,7 +24,7 @@ componentDidMount()
   const authResult = new URLSearchParams(window.location.search); 
 const id = authResult.get('id');
 
-
+console.log("called");
 
  axios.post(`${process.env.REACT_APP_URL}/getPost`,{id:id}).then(data=>{
    console.log(data.data);
@@ -34,19 +34,34 @@ const id = authResult.get('id');
 })
 
 }
- imageUrl=(path)=>{
- if(path.length>0)
- {
-  let path2= path.split("uploads")[1].replace(/\\/g, "/");
  
- 
-  return `${process.env.REACT_APP_URL}/${path2}`
- }
 
+
+imageUrl=(path)=>{
+
+  if(path.length>0)
+  {
+    console.log(path);
+
+    if(path.includes("http"))
   
+    {
+     return path;
+    }
+   else{
+    let path2= path.split("uploads")[1].replace(/\\/g, "/");
+  
+  
+    return `${process.env.REACT_APP_URL}/${path2}`
+   }
+
+
+  }
+
  
- 
- }
+
+
+}
 
     render() {
         return (

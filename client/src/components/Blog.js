@@ -11,11 +11,12 @@ export default function Blog() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5);
+    const authResult = new URLSearchParams(window.location.search); 
+        const id = authResult.get('category');
   
     useEffect(() => {
       const fetchPosts = async () => {
-        const authResult = new URLSearchParams(window.location.search); 
-        const id = authResult.get('category');
+        
         
         setLoading(true);
       let res
@@ -34,7 +35,7 @@ export default function Blog() {
       };
   
       fetchPosts();
-    }, []);
+    }, [id]);
 
 
  // Get current posts

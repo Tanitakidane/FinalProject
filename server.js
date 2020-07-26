@@ -152,6 +152,7 @@ res.json({posts:posts});
 
 
 app.post("/getCategoryPosts",async(req,res)=>{
+    console.log(req.body);
 
 
     try {
@@ -162,6 +163,7 @@ app.post("/getCategoryPosts",async(req,res)=>{
     
     
     } catch (error) {
+        console.log(error);
         
     }
         
@@ -175,7 +177,7 @@ app.post("/getCategoryPosts",async(req,res)=>{
 
 
 app.post("/getPost",async(req,res)=>{
-    console.log(req.body);
+  
 
 
     try {
