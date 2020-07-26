@@ -8,6 +8,24 @@ var path = require('path');
 const FormData = require('form-data');
 const fetch = require('node-fetch');
 const jwt =require('jsonwebtoken');
+const multer = require('multer')
+const AWS = require('aws-sdk')
+const { v4: uuidv4 } = require('uuid');
+
+
+
+const s3 = new AWS.S3({
+    accessKeyId: "AKIAIW5I3TLYNPDXOR5A",
+    secretAccessKey: "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"
+})
+
+const storage = multer.memoryStorage({
+    destination: function(req, file, callback) {
+        callback(null, '')
+    }
+})
+
+const upload = multer({storage}).single('file')
 
 var giveMeAJoke = require('give-me-a-joke');
 
@@ -99,26 +117,50 @@ res.json({message:"SuccesFully Registered Please Login To Post Content"});
 })
 
 
-app.post("/api/createpost",multipartMiddleware,async(req,res)=>{
+app.post("/api/createpost",upload,async(req,res)=>{
 
     // invalid token - synchronous
 try {
+    console.log("executed");
     var decoded = jwt.verify(req.headers["authorization"],"logan");
 
-const post =new Post({
-    title:req.body.title,
-    body:req.body.text,
-    image:req.files.file.path,
-    category:req.body.category,
-    user:decoded.user,
-
-})
 
 
+    let myFile = req.file.originalname.split(".")
+    const fileType = myFile[myFile.length - 1]
+
+    const params = {
+        Bucket: "curbsidephillytanita",
+        Key: `${uuidv4()}.${fileType}`,
+        Body: req.file.buffer
+    }
+
+    s3.upload(params, async(error, data) => {
+        if(error){
+            res.status(500).send(error)
+        }
 
 
-await post.save();
-res.json({message:"Post Saved SuccessFully"})
+        const post =new Post({
+            title:req.body.title,
+            body:req.body.text,
+            image:data.Location,
+            category:req.body.category,
+            user:decoded.user,
+        
+        })
+        
+        
+        
+        
+        await post.save();
+        res.json({message:"Post Saved SuccessFully"})
+        
+    })
+
+
+
+
     
   } catch(err) {
       console.log(err);
