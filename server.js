@@ -18,7 +18,7 @@ const app=express();
 
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'uploads')));
+app.use("/api",express.static(path.join(__dirname, 'uploads')));
 
 const cors = require('cors');
 app.use(cors());
@@ -32,7 +32,7 @@ console.log("node env",process.env.NODE_ENV);
   {
       
    
-    app.use("/api",express.static('client/build'));
+    app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
