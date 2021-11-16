@@ -15,7 +15,7 @@
   "author": "Tanita kidane",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.720.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "connect-multiparty": "^2.2.0",
