@@ -24,7 +24,7 @@
     "form-data": "^3.0.0",
     "give-me-a-joke": "^0.3.2",
     "if-env": "^1.0.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.24",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
